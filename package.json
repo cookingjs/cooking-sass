@@ -1,0 +1,28 @@
+{
+  "name": "cooking-sass",
+  "version": "0.0.0",
+  "description": "A cooking plugin to import sass.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cookingjs/cooking-sass.git"
+  },
+  "keywords": [
+    "cooking",
+    "sass",
+    "cooking-plugin"
+  ],
+  "author": "qingwei-li <qingwei.li@ele.me>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cookingjs/cooking-sass/issues"
+  },
+  "homepage": "https://github.com/cookingjs/cooking-sass#readme",
+  "dependencies": {
+    "node-sass": "3.4.2",
+    "sass-loader": "3.1.2"
+  }
+}
