@@ -1,22 +1,25 @@
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var load = require('./sass-loader')
 
 module.exports = function (cooking) {
-  var scssLoader, sassLoader
-  if (process.env.NODE_ENV === 'PRODUCTION') {
-    scssLoader = ExtractTextPlugin.extract('style-loader', 'css!sass?indentedSyntax')
-    sassLoader = ExtractTextPlugin.extract('style-loader', 'css!sass')
+  var loader
+  var SOURCE_MAP = cooking.config.sourceMap
+
+  if (process.env.NODE_ENV === 'production') {
+    loader = load({
+      sourceMap: SOURCE_MAP ? '#source-map' : false,
+      extract: true
+    })
   } else {
-    scssLoader = ['sass']
-    sassLoader = ['sass?indentedSyntax']
+    loader = load()
   }
 
   cooking.add('loader.scss', {
     test: /\.scss$/,
-    loader: scssLoader
+    loader: loader.scss
   })
 
   cooking.add('loader.sass', {
     test: /\.sass$/,
-    loader: sassLoader
+    loader: loader.sass
   })
 }
