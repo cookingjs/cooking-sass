@@ -7,7 +7,7 @@ module.exports = function (cooking) {
   if (process.env.NODE_ENV === 'production') {
     loader = load({
       sourceMap: SOURCE_MAP ? '#source-map' : false,
-      extract: true
+      extract: !!cooking.config.extractCSS
     })
   } else {
     loader = load()
