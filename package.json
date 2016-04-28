@@ -1,6 +1,6 @@
 {
   "name": "cooking-sass",
-  "version": "0.0.3",
+  "version": "0.1.0",
   "description": "A cooking plugin to import sass.",
   "main": "index.js",
   "scripts": {
