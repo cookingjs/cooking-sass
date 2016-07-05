@@ -15,11 +15,13 @@ module.exports = function (cooking) {
 
   cooking.add('loader.scss', {
     test: /\.scss$/,
-    loader: loader.scss
+    loader: loader.scss,
+    postcss: !!cooking.config.postcss
   })
 
   cooking.add('loader.sass', {
     test: /\.sass$/,
-    loader: loader.sass
+    loader: loader.sass,
+    postcss: !!cooking.config.postcss
   })
 }

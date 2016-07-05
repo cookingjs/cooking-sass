@@ -16,6 +16,10 @@ module.exports = function (options) {
       return loader + (options.sourceMap ? extraParamChar + 'sourceMap' : '')
     }).join('!')
 
+    if (options.postcss) {
+      sourceLoader.unshift('postcss-loader')
+    }
+
     if (options.extract) {
       return ExtractTextPlugin.extract('style-loader', sourceLoader)
     } else {
