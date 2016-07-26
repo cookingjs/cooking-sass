@@ -4,6 +4,10 @@ module.exports = function (options) {
   options = options || {}
   // generate loader string to be used with extract text plugin
   function generateLoaders (loaders) {
+    if (options.postcss) {
+      loaders.push('postcss')
+    }
+
     var sourceLoader = loaders.map(function (loader) {
       var extraParamChar
       if (/\?/.test(loader)) {
@@ -15,10 +19,6 @@ module.exports = function (options) {
       }
       return loader + (options.sourceMap ? extraParamChar + 'sourceMap' : '')
     }).join('!')
-
-    if (options.postcss) {
-      sourceLoader.unshift('postcss-loader')
-    }
 
     if (options.extract) {
       return ExtractTextPlugin.extract('style-loader', sourceLoader)

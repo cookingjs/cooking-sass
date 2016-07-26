@@ -7,7 +7,8 @@ module.exports = function (cooking) {
   if (process.env.NODE_ENV === 'production') {
     loader = load({
       sourceMap: SOURCE_MAP ? '#source-map' : false,
-      extract: !!cooking.config.extractCSS
+      extract: !!cooking.config.extractCSS,
+      postcss: !!cooking.config.postcss
     })
   } else {
     loader = load()
@@ -15,13 +16,11 @@ module.exports = function (cooking) {
 
   cooking.add('loader.scss', {
     test: /\.scss$/,
-    loader: loader.scss,
-    postcss: !!cooking.config.postcss
+    loader: loader.scss
   })
 
   cooking.add('loader.sass', {
     test: /\.sass$/,
-    loader: loader.sass,
-    postcss: !!cooking.config.postcss
+    loader: loader.sass
   })
 }
