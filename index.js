@@ -11,7 +11,9 @@ module.exports = function (cooking) {
       postcss: !!cooking.config.postcss
     })
   } else {
-    loader = load()
+    loader = load({
+      postcss: !!cooking.config.postcss
+    })
   }
 
   cooking.add('loader.scss', {
