@@ -2,7 +2,7 @@ var load = require('./sass-loader')
 
 module.exports = function (cooking) {
   var loader
-  var SOURCE_MAP = cooking.config.sourceMap
+  var SOURCE_MAP = cooking.config.devtool
 
   if (process.env.NODE_ENV === 'production') {
     loader = load({

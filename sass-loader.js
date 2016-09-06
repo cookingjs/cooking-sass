@@ -1,11 +1,10 @@
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var nextVersion = require('cooking').version
+var isNextWebpack = false
+try {
+  isNextWebpack = require('cooking/util/check').isNextWebpack
+} catch(_) {}
 
 module.exports = function (options) {
-  if (nextVersion) {
-    nextVersion = Number(nextVersion.split('.')[0])
-  }
-
   options = options || {}
   // generate loader string to be used with extract text plugin
   function generateLoaders (loaders) {
@@ -26,7 +25,7 @@ module.exports = function (options) {
     }).join('!')
 
     if (options.extract) {
-      return nextVersion > 0
+      return isNextWebpack
         ? ExtractTextPlugin.extract({
           fallbackLoader: 'style-loader',
           loader: sourceLoader
