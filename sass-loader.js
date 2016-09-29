@@ -9,7 +9,7 @@ module.exports = function (options) {
   // generate loader string to be used with extract text plugin
   function generateLoaders (loaders) {
     if (options.postcss) {
-      loaders.push('postcss')
+      loaders.splice(loaders.length - 1, 0, 'postcss')
     }
 
     var sourceLoader = loaders.map(function (loader) {
